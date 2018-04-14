@@ -18,6 +18,17 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="EvolutionGame\Src\Main.cpp" />
+    <ClCompile Include="EvolutionGame\Src\Vector2.cpp" />
+    <ClCompile Include="EvolutionGame\Src\View.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="EvolutionGame\Include\IView.h" />
+    <ClInclude Include="EvolutionGame\Include\Presenter.h" />
+    <ClInclude Include="EvolutionGame\Include\Vector2.h" />
+    <ClInclude Include="EvolutionGame\Include\View.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{7D25C983-8F63-4FF9-B3EC-2FEE4E10D77C}</ProjectGuid>
@@ -69,7 +80,16 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <SourcePath>../Src;$(VC_SourcePath);</SourcePath>
+    <IncludePath>../Include;$(IncludePath);</IncludePath>
+    <ExecutablePath>$(ExecutablePath);</ExecutablePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ExecutablePath>$(ExecutablePath);</ExecutablePath>
+    <IncludePath>../Include;$(IncludePath);</IncludePath>
+    <SourcePath>../Src;$(VC_SourcePath);</SourcePath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -114,9 +134,6 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="Main.cpp" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
