@@ -19,19 +19,19 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="EvolutionGame\Src\Main.cpp" />
-    <ClCompile Include="EvolutionGame\Src\Vector2.cpp" />
-    <ClCompile Include="EvolutionGame\Src\View.cpp" />
+    <ClInclude Include="Include\IView.h" />
+    <ClInclude Include="Include\Presenter.h" />
+    <ClInclude Include="Include\Vector2.h" />
+    <ClInclude Include="Include\View.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="EvolutionGame\Include\IView.h" />
-    <ClInclude Include="EvolutionGame\Include\Presenter.h" />
-    <ClInclude Include="EvolutionGame\Include\Vector2.h" />
-    <ClInclude Include="EvolutionGame\Include\View.h" />
+    <ClCompile Include="Src\Main.cpp" />
+    <ClCompile Include="Src\Vector2.cpp" />
+    <ClCompile Include="Src\View.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{7D25C983-8F63-4FF9-B3EC-2FEE4E10D77C}</ProjectGuid>
+    <ProjectGuid>{96750D3B-1DF1-46F1-9209-642172951033}</ProjectGuid>
     <RootNamespace>EvolutionGame</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
@@ -81,14 +81,8 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <SourcePath>../Src;$(VC_SourcePath);</SourcePath>
-    <IncludePath>../Include;$(IncludePath);</IncludePath>
-    <ExecutablePath>$(ExecutablePath);</ExecutablePath>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <ExecutablePath>$(ExecutablePath);</ExecutablePath>
-    <IncludePath>../Include;$(IncludePath);</IncludePath>
-    <SourcePath>../Src;$(VC_SourcePath);</SourcePath>
+    <IncludePath>include;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
+    <SourcePath>src;$(VC_SourcePath);</SourcePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>

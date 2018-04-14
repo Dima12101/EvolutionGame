@@ -13,12 +13,11 @@ private:
 	HDC hDC;
 	HPEN hPen;
 	RECT screen;
-	INPUT_RECORD InRec;
 
-	//size field and starting cells
-	void Initialization();
 public:
 	View();
+
+	~View();
 
 	//for presenter
 	void DrawLine(const Vector2&, const Vector2&);
