@@ -34,10 +34,14 @@ void View::Run() {
 	bool isStop = true;
 	while (true)
 	{
+		if (isStart && !isStop)
+		{
+			presenter->RunGame();
+		}
 		WaitForSingleObject(hStdin, INFINITE);
 		DWORD NumEvents;
 		INPUT_RECORD InRec;
-		BOOL b = ReadConsoleInputW(hStdin, &InRec, 3, &NumEvents);
+		BOOL b = ReadConsoleInputW(hStdin, &InRec, 1, &NumEvents);
 		POINT pos;
 		if (NumEvents != 0 && InRec.EventType == MOUSE_EVENT && InRec.Event.MouseEvent.dwButtonState == RI_MOUSE_BUTTON_1_DOWN)
 		{
@@ -87,11 +91,6 @@ void View::Run() {
 				}
 			}
 		}
-
-		if (isStart && !isStop)
-		{
-			presenter->RunGame();
-		}
 	}
 }
 
@@ -116,6 +115,15 @@ void View::SetColor(color col) {
 			break;
 		case green:
 			pen_color = RGB(0, 255, 0);
+			break;
+		case yellow:
+			pen_color = RGB(255, 255, 0);
+			break;
+		case blue:
+			pen_color = RGB(0, 255, 255);
+			break;
+		case brown:
+			pen_color = RGB(200, 200, 150);
 			break;
 	}
 

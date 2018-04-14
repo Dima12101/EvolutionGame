@@ -14,7 +14,7 @@ private:
 	int Butten2IndexX;
 	int Butten2IndexY;
 	bool firstClickOnButten = true;
-	long long sizePause = 10000000;
+	long long sizePause = 20000000;
 	bool** field;
 	bool** fieldTemp;
 
@@ -24,13 +24,15 @@ private:
 	}
 
 	//in start 
-	void drawField()
+	void drawScene()
 	{
 		//draw border
+		view->SetColor(blue);
 		view->DrawLine(Vector2(0, 0), Vector2(width * scale, 0));
 		view->DrawLine(Vector2(0, 0), Vector2(0, height * scale));
 		view->DrawLine(Vector2(width * scale, 0), Vector2(width * scale, height * scale));
 		view->DrawLine(Vector2(0, height * scale), Vector2(width * scale, height * scale));
+		
 
 		//draw horizontal line
 		for (int i = 0; i < height; i++)
@@ -44,6 +46,7 @@ private:
 			view->DrawLine(Vector2(j * scale, 0), Vector2(j * scale, height * scale));
 		}
 
+		view->SetColor(brown);
 		//draw butten1
 		view->DrawLine(Vector2(Butten1IndexX * scale, Butten1IndexY * scale), Vector2((Butten1IndexX + 1) * scale, Butten1IndexY * scale));
 		view->DrawLine(Vector2(Butten1IndexX * scale, Butten1IndexY * scale), Vector2(Butten1IndexX * scale, (Butten1IndexY + 1) * scale));
@@ -70,7 +73,7 @@ private:
 		view->DrawLine(Vector2((indexX + 1) * scale, indexY * scale), Vector2(indexX* scale, (indexY + 1) * scale));
 	}
 	
-	//for drawScene
+	//for update
 	int countNeighbors(int indexX, int indexY)
 	{
 		int result = 0;
@@ -86,7 +89,7 @@ private:
 	}
 	
 	//check condition and draw cells
-	void drawScene()
+	void update()
 	{
 		//new Info
 		for (int i = 0; i < height; i++)
@@ -116,7 +119,7 @@ private:
 					field[i][j] = fieldTemp[i][j];
 					if (field[i][j])
 					{
-						drawCell(j, i, white);
+						drawCell(j, i, yellow);
 					}
 					if (!field[i][j])
 					{
@@ -193,7 +196,7 @@ public:
 
 		Butten2IndexX = width + 1;
 		Butten2IndexY = 2;
-		drawField();
+		drawScene();
 	}
 
 	//when Initialization starting cells
@@ -208,7 +211,7 @@ public:
 					if (!field[i][j])
 					{
 						field[i][j] = true;
-						drawCell(j, i, white);
+						drawCell(j, i, yellow);
 					}
 					return true;
 				}
@@ -244,6 +247,7 @@ public:
 		{
 			clearField();
 			clearCell(Butten1IndexX, Butten1IndexY);
+			firstClickOnButten = true;
 			return true;
 		}
 		return false;
@@ -253,7 +257,7 @@ public:
 	void RunGame()
 	{
 		pause();
-		drawScene();
+		update();
 	}
 };
 

@@ -2,7 +2,7 @@
 #define __IVIEW
 #include "Vector2.h"
 
-enum color { white, red, transparent, green};
+enum color { white, red, transparent, green, yellow, blue, brown };
 
 class IView
 {
